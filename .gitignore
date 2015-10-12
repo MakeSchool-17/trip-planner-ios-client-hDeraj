@@ -31,3 +31,7 @@ DerivedData
 # Carthage/Checkouts
 
 Carthage/Build
+
+Trip Planner/FBSDKCoreKit.framework/
+Trip Planner/FBSDKLoginKit.framework/
+Trip Planner/FBSDKShareKit.framework/
