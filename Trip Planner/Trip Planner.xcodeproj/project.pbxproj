@@ -18,6 +18,8 @@
 		7F587ED21BCC6BEB00FC48DF /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F587ECF1BCC6BEB00FC48DF /* FBSDKCoreKit.framework */; settings = {ASSET_TAGS = (); }; };
 		7F587ED31BCC6BEB00FC48DF /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F587ED01BCC6BEB00FC48DF /* FBSDKLoginKit.framework */; settings = {ASSET_TAGS = (); }; };
 		7F587ED41BCC6BEB00FC48DF /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F587ED11BCC6BEB00FC48DF /* FBSDKShareKit.framework */; settings = {ASSET_TAGS = (); }; };
+		7F671ECA1BCEE35D00D0AE99 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F671EC91BCEE35D00D0AE99 /* MainViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		7F671ECC1BCEE48100D0AE99 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F671ECB1BCEE48100D0AE99 /* NewTripViewController.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +57,8 @@
 		7F587ECF1BCC6BEB00FC48DF /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		7F587ED01BCC6BEB00FC48DF /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		7F587ED11BCC6BEB00FC48DF /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
+		7F671EC91BCEE35D00D0AE99 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7F671ECB1BCEE48100D0AE99 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,12 +116,14 @@
 			isa = PBXGroup;
 			children = (
 				7F587E911BCC479C00FC48DF /* AppDelegate.swift */,
-				7F587E931BCC479C00FC48DF /* LoginViewController.swift */,
 				7F587E9B1BCC479C00FC48DF /* Assets.xcassets */,
 				7F587E9D1BCC479D00FC48DF /* LaunchScreen.storyboard */,
 				7F587EA01BCC479D00FC48DF /* Info.plist */,
 				7F587E981BCC479C00FC48DF /* Trip_Planner.xcdatamodeld */,
 				7F587E951BCC479C00FC48DF /* Main.storyboard */,
+				7F587E931BCC479C00FC48DF /* LoginViewController.swift */,
+				7F671EC91BCEE35D00D0AE99 /* MainViewController.swift */,
+				7F671ECB1BCEE48100D0AE99 /* NewTripViewController.swift */,
 			);
 			path = "Trip Planner";
 			sourceTree = "<group>";
@@ -275,7 +281,9 @@
 			files = (
 				7F587E941BCC479C00FC48DF /* LoginViewController.swift in Sources */,
 				7F587E9A1BCC479C00FC48DF /* Trip_Planner.xcdatamodeld in Sources */,
+				7F671ECC1BCEE48100D0AE99 /* NewTripViewController.swift in Sources */,
 				7F587E921BCC479C00FC48DF /* AppDelegate.swift in Sources */,
+				7F671ECA1BCEE35D00D0AE99 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

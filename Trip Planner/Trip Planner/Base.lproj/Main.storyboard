@@ -57,11 +57,37 @@
         <!--Trip Planner-->
         <scene sceneID="uGf-p8-xIp">
             <objects>
-                <viewController id="HbM-tE-AK3" sceneMemberID="viewController">
+                <viewController id="HbM-tE-AK3" customClass="MainViewController" customModule="Trip_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="vYf-oX-X2n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MainTripCellView" id="0li-73-0pI" customClass="MainTripViewCell" customModule="Trip_Planner" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0li-73-0pI" id="BJO-Iq-Mr3">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPp-lF-YXe">
+                                            <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="KPp-lF-YXe" firstAttribute="trailing" secondItem="BJO-Iq-Mr3" secondAttribute="trailingMargin" id="LBp-Fe-2YE"/>
+                                        <constraint firstItem="KPp-lF-YXe" firstAttribute="centerY" secondItem="BJO-Iq-Mr3" secondAttribute="centerY" id="PmX-98-bVX"/>
+                                        <constraint firstItem="KPp-lF-YXe" firstAttribute="leading" secondItem="BJO-Iq-Mr3" secondAttribute="leadingMargin" id="WkC-1i-ZGS"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="tripName" destination="KPp-lF-YXe" id="Wvh-tc-h8H"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Trip Planner" id="mzg-8c-3m4">
@@ -73,6 +99,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tripTable" destination="vYf-oX-X2n" id="VQm-iM-Mps"/>
                         <segue destination="HHp-Ct-qla" kind="show" identifier="showEmptyTrip" id="XfA-Fs-fCd"/>
                         <segue destination="Jma-OQ-X3g" kind="show" identifier="showTrip" id="hHb-hn-nm9"/>
                     </connections>
@@ -279,7 +306,7 @@
         <!--New Trip-->
         <scene sceneID="cnf-6Z-pvZ">
             <objects>
-                <viewController id="7ua-YG-TSO" sceneMemberID="viewController">
+                <viewController id="7ua-YG-TSO" customClass="NewTripViewController" customModule="Trip_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hiq-N1-Ret"/>
                         <viewControllerLayoutGuide type="bottom" id="8kl-eX-GQD"/>
@@ -331,9 +358,17 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="New Trip" id="6Pp-wX-xiy">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="K0r-Sk-YXZ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="K0r-Sk-YXZ">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="7ua-YG-TSO" id="Y3h-kq-Ceb"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tripDateInput" destination="e91-36-Wgq" id="Npa-Yc-Nwq"/>
+                        <outlet property="tripNameInput" destination="PW4-Rn-Cd4" id="cMD-rp-MNQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l2P-Q4-SuE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

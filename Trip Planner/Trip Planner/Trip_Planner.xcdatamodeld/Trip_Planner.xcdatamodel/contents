@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8195" systemVersion="14F27" minimumToolsVersion="Automatic">
+    <entity name="Trip" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owns" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Waypoint" inverseName="isOwned" inverseEntity="Waypoint" syncable="YES"/>
+    </entity>
+    <entity name="Waypoint" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="isOwned" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="owns" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Trip" positionX="-675" positionY="-3303" width="117" height="88"/>
+        <element name="Waypoint" positionX="-479" positionY="-3253" width="128" height="73"/>
+    </elements>
 </model>
