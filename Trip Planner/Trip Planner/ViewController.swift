@@ -10,45 +10,33 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController, FBSDKLoginButtonDelegate {
+class ViewController: UIViewController {
 
-    override func viewDidLoad() {
+    override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         if (FBSDKAccessToken.currentAccessToken() == nil){
             print("Not logged in.")
         }else{
             print("Logged in.")
+            self.performSegueWithIdentifier("afterLogin", sender: self)
         }
-        
-        let loginButton = FBSDKLoginButton()
-        loginButton.readPermissions = ["public_profile", "email", "user_friends"]
-        loginButton.center = self.view.center
-        loginButton.delegate = self
-        
-        self.view.addSubview(loginButton)
-        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-        if (error == nil){
-            print("Login Complete.")
-            print(FBSDKAccessToken.currentAccessToken().description)
-            self.performSegueWithIdentifier("afterLogin", sender: self)
-        }else{
-            print(error.localizedDescription)
+    @IBAction func loginPressedEvent(sender: AnyObject) {
+        let loginManager = FBSDKLoginManager.init()
+        loginManager.logInWithReadPermissions(["public_profile", "email", "user_friends"], fromViewController: self) { (result, error) -> Void in
+            if (error != nil){
+                print("Process error")
+            }else if(result.isCancelled){
+                print("Cancelled")
+            }else{
+                print("Logged in")
+            }
         }
     }
-    
-    func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        print("Logged out.")
-    }
-
-
 }
 
