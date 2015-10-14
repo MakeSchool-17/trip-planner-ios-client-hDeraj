@@ -100,7 +100,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tripTable" destination="vYf-oX-X2n" id="VQm-iM-Mps"/>
-                        <segue destination="HHp-Ct-qla" kind="show" identifier="showEmptyTrip" id="XfA-Fs-fCd"/>
                         <segue destination="Jma-OQ-X3g" kind="show" identifier="showTrip" id="hHb-hn-nm9"/>
                     </connections>
                 </viewController>
@@ -108,56 +107,10 @@
             </objects>
             <point key="canvasLocation" x="1203" y="389"/>
         </scene>
-        <!--(Trip Name)-->
-        <scene sceneID="zfv-jG-6l4">
-            <objects>
-                <viewController id="HHp-Ct-qla" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XGE-8e-iFE"/>
-                        <viewControllerLayoutGuide type="bottom" id="mBY-rB-zC5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="B28-f9-cNE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You haven't added any waypoints yet!" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFs-DU-lnG">
-                                <rect key="frame" x="148" y="286" width="304" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPx-tn-O7z">
-                                <rect key="frame" x="248" y="377" width="105" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="Ztd-RT-zeT"/>
-                                </constraints>
-                                <state key="normal" title="Add a waypoint"/>
-                                <connections>
-                                    <segue destination="AjW-uF-Vfe" kind="show" identifier="addWaypoint" id="VyI-rr-19m"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="oPx-tn-O7z" firstAttribute="centerX" secondItem="PFs-DU-lnG" secondAttribute="centerX" id="3o1-SR-qJa"/>
-                            <constraint firstItem="oPx-tn-O7z" firstAttribute="top" secondItem="PFs-DU-lnG" secondAttribute="bottom" constant="67" id="Luo-cF-iNX"/>
-                            <constraint firstItem="mBY-rB-zC5" firstAttribute="top" secondItem="oPx-tn-O7z" secondAttribute="bottom" constant="149" id="e03-eL-1As"/>
-                            <constraint firstItem="PFs-DU-lnG" firstAttribute="centerY" secondItem="B28-f9-cNE" secondAttribute="centerY" constant="-2" id="sVl-FA-1T6"/>
-                            <constraint firstItem="PFs-DU-lnG" firstAttribute="centerX" secondItem="B28-f9-cNE" secondAttribute="centerX" id="yBL-f1-6ml"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="(Trip Name)" id="GD4-Pz-Oo0">
-                        <barButtonItem key="backBarButtonItem" title=" " id="fPf-3n-2a0"/>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5km-ls-uhb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="887" y="1134"/>
-        </scene>
-        <!--(Trip Name)-->
+        <!--TripViewController-->
         <scene sceneID="MGT-1N-dJg">
             <objects>
-                <viewController id="Jma-OQ-X3g" sceneMemberID="viewController">
+                <viewController title="TripViewController" id="Jma-OQ-X3g" customClass="TripViewController" customModule="Trip_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hgR-Zr-IRg"/>
                         <viewControllerLayoutGuide type="bottom" id="z1q-ZC-Lto"/>
@@ -169,6 +122,16 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="nKC-Tn-LFB">
                                 <rect key="frame" x="0.0" y="184" width="600" height="372"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="WaypointViewCell" id="xrw-HY-X1g" customClass="WaypointViewCell" customModule="Trip_Planner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrw-HY-X1g" id="V8J-Hs-LFh">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R0T-Uk-OUX">
                                 <rect key="frame" x="8" y="72" width="104" height="104"/>
@@ -218,12 +181,17 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="yKq-D3-qDG"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="titleBar" destination="z7F-xb-LdO" id="1v7-2X-hNr"/>
+                        <outlet property="tripDateLabel" destination="HjF-wy-0hh" id="sZk-Pq-qvS"/>
+                        <outlet property="tripImageLabel" destination="R0T-Uk-OUX" id="mt8-mk-847"/>
+                        <outlet property="tripNameLabel" destination="aea-Cy-4Zo" id="tTG-4B-f70"/>
+                        <outlet property="waypointsTable" destination="nKC-Tn-LFB" id="1gw-pI-O4Z"/>
                         <segue destination="Wz3-yG-cQu" kind="show" identifier="viewWaypoint" id="HBq-SB-QtK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a7Y-6u-G7N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1540" y="1134"/>
+            <point key="canvasLocation" x="1203" y="1160"/>
         </scene>
         <!--New Waypoint-->
         <scene sceneID="aRr-X5-K3f">
@@ -391,7 +359,4 @@
             <point key="canvasLocation" x="1203" y="-341"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="Ae6-hz-8pK"/>
-    </inferredMetricsTieBreakers>
 </document>

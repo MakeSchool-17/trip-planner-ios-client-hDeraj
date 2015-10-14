@@ -38,7 +38,7 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier("showEmptyTrip", sender: self)
+        self.performSegueWithIdentifier("showTrip", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -49,6 +49,14 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
                 viewController.delegate = self
             }
         }
+        if segue.identifier! == "showTrip" {
+            let showTripViewController = segue.destinationViewController as? TripViewController
+            
+            if let viewController = showTripViewController {
+                viewController.trip = self.trips[0]
+                viewController.waypoints = self.trips[0].waypoints
+            }
+        }
     }
     
     // MARK: Add Item View Controller Delegate Methods
@@ -56,7 +64,6 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
         let trip = Trip(name: tripName, date: tripDate, waypoints: [])
         self.trips += [trip]
         
-        // Reload Table View
         self.tripTable.reloadData()
     }
 }
@@ -64,7 +71,7 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
 struct Trip {
     var name : String
     var date : NSDate
-    var waypoints : [String]
+    var waypoints : [Waypoint]
 }
 
 class MainTripViewCell : UITableViewCell {
