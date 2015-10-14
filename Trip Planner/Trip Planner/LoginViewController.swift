@@ -10,7 +10,7 @@ import UIKit
 import FBSDKCoreKit
 import FBSDKLoginKit
 
-class ViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidLoad()

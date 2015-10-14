@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7F587E921BCC479C00FC48DF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F587E911BCC479C00FC48DF /* AppDelegate.swift */; };
-		7F587E941BCC479C00FC48DF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F587E931BCC479C00FC48DF /* ViewController.swift */; };
+		7F587E941BCC479C00FC48DF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F587E931BCC479C00FC48DF /* LoginViewController.swift */; };
 		7F587E971BCC479C00FC48DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7F587E951BCC479C00FC48DF /* Main.storyboard */; };
 		7F587E9A1BCC479C00FC48DF /* Trip_Planner.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7F587E981BCC479C00FC48DF /* Trip_Planner.xcdatamodeld */; };
 		7F587E9C1BCC479C00FC48DF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F587E9B1BCC479C00FC48DF /* Assets.xcassets */; };
@@ -40,7 +40,7 @@
 /* Begin PBXFileReference section */
 		7F587E8E1BCC479C00FC48DF /* Trip Planner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Planner.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F587E911BCC479C00FC48DF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7F587E931BCC479C00FC48DF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7F587E931BCC479C00FC48DF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		7F587E961BCC479C00FC48DF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7F587E991BCC479C00FC48DF /* Trip_Planner.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Trip_Planner.xcdatamodel; sourceTree = "<group>"; };
 		7F587E9B1BCC479C00FC48DF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,12 +112,12 @@
 			isa = PBXGroup;
 			children = (
 				7F587E911BCC479C00FC48DF /* AppDelegate.swift */,
-				7F587E931BCC479C00FC48DF /* ViewController.swift */,
-				7F587E951BCC479C00FC48DF /* Main.storyboard */,
+				7F587E931BCC479C00FC48DF /* LoginViewController.swift */,
 				7F587E9B1BCC479C00FC48DF /* Assets.xcassets */,
 				7F587E9D1BCC479D00FC48DF /* LaunchScreen.storyboard */,
 				7F587EA01BCC479D00FC48DF /* Info.plist */,
 				7F587E981BCC479C00FC48DF /* Trip_Planner.xcdatamodeld */,
+				7F587E951BCC479C00FC48DF /* Main.storyboard */,
 			);
 			path = "Trip Planner";
 			sourceTree = "<group>";
@@ -273,7 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F587E941BCC479C00FC48DF /* ViewController.swift in Sources */,
+				7F587E941BCC479C00FC48DF /* LoginViewController.swift in Sources */,
 				7F587E9A1BCC479C00FC48DF /* Trip_Planner.xcdatamodeld in Sources */,
 				7F587E921BCC479C00FC48DF /* AppDelegate.swift in Sources */,
 			);
@@ -516,6 +516,7 @@
 				7F587EBB1BCC479D00FC48DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F587EBC1BCC479D00FC48DF /* Build configuration list for PBXNativeTarget "Trip PlannerTests" */ = {
 			isa = XCConfigurationList;
@@ -524,6 +525,7 @@
 				7F587EBE1BCC479D00FC48DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7F587EBF1BCC479D00FC48DF /* Build configuration list for PBXNativeTarget "Trip PlannerUITests" */ = {
 			isa = XCConfigurationList;
@@ -532,6 +534,7 @@
 				7F587EC11BCC479D00FC48DF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
