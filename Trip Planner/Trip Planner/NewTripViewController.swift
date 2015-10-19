@@ -8,23 +8,25 @@
 
 import Foundation
 import UIKit
-import FBSDKCoreKit
-
-protocol NewTripViewControllerDelegate {
-    func controller(controller: NewTripViewController, tripName: String, tripDate: NSDate)
-}
 
 class NewTripViewController : UIViewController {
     
     @IBOutlet weak var tripNameInput: UITextField!
     @IBOutlet weak var tripDateInput: UIDatePicker!
     
-    var delegate: NewTripViewControllerDelegate?
+    var coreDataRef : CoreDataStack!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        coreDataRef = applicationDelegate.sharedCoreDataRef
+    }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        if let delegate = self.delegate {
-            delegate.controller(self, tripName: tripNameInput.text!,
-                tripDate: tripDateInput.date)
+        if(tripNameInput.text! != ""){
+            let trip = Trip(context: coreDataRef.managedObjectContext)
+            trip.name = tripNameInput.text!
+            trip.date = tripDateInput.date
         }
         
         self.navigationController?.popViewControllerAnimated(true)

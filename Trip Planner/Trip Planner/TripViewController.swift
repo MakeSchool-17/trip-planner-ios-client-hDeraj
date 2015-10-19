@@ -8,26 +8,35 @@
 
 import Foundation
 import UIKit
-import FBSDKCoreKit
 
 class TripViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var trip : Trip?
-    var waypoints = [Waypoint]()
+    var trip : Trip!
+    var selectedWaypoint : Int = 0
+    var coreDataRef : CoreDataStack!
+    
     @IBOutlet weak var tripDateLabel: UILabel!
     @IBOutlet weak var tripImageLabel: UIImageView!
     @IBOutlet weak var tripNameLabel: UILabel!
     @IBOutlet weak var titleBar: UINavigationItem!
     @IBOutlet weak var waypointsTable: UITableView!
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         waypointsTable.dataSource = self
         waypointsTable.delegate = self
-        waypoints = trip!.waypoints
-        titleBar.title = trip!.name
-        tripNameLabel.text = trip!.name
-        tripDateLabel.text = trip!.date.description
-        waypoints += [Waypoint(name: "testing 123")]
+        
+        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        coreDataRef = applicationDelegate.sharedCoreDataRef
+        
+        titleBar.title = trip.name
+        tripNameLabel.text = trip.name
+        tripDateLabel.text = trip.date?.description
         waypointsTable.reloadData()
     }
     
@@ -37,33 +46,35 @@ class TripViewController : UIViewController, UITableViewDelegate, UITableViewDat
         
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! WaypointViewCell
         
-        //let waypoint = waypoints[indexPath.row]
-        //cell.tripName.text = waypoint.name
+        let waypoints = trip.waypoints?.array as! [Waypoint]
+        let waypoint = waypoints[indexPath.row]
+        cell.waypointNameLabel.text = waypoint.name
         
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return waypoints.count
+        return trip.waypoints!.count
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        //self.performSegueWithIdentifier("showTrip", sender: self)
+        selectedWaypoint = indexPath.item
+        self.performSegueWithIdentifier("showTrip", sender: self)
     }
     
-    // MARK: Add Item View Controller Delegate Methods
-    func controller(controller: NewTripViewController, tripName: String, tripDate: NSDate) {
-        let waypoint = Waypoint(name: tripName)
-        self.waypoints += [waypoint]
-        
-        //self.tripTable.reloadData()
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier! == "viewWaypoint" {
+            let waypointViewController = segue.destinationViewController as? WaypointViewController
+            
+            if let viewController = waypointViewController {
+                viewController.waypoint = self.trip.waypoints![self.selectedWaypoint] as! Waypoint
+            }
+        }
     }
-}
-
-struct Waypoint {
-    var name : String
+    
 }
 
 class WaypointViewCell : UITableViewCell {
     
+    @IBOutlet weak var waypointNameLabel: UILabel!
 }

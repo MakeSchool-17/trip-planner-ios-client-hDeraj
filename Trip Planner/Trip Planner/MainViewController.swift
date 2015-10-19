@@ -8,28 +8,51 @@
 
 import Foundation
 import UIKit
-import FBSDKCoreKit
+import CoreData
 
-class MainViewController : UIViewController, UITableViewDelegate, UITableViewDataSource, NewTripViewControllerDelegate {
+class MainViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var trips = [Trip]()
+    var selectedTrip : Int = 0
     
     @IBOutlet var tripTable: UITableView!
     
+    var coreDataRef : CoreDataStack!
+    
+    override func viewWillAppear(animated: Bool) {
+        let fetchRequest = NSFetchRequest(entityName : "Trip")
+        
+        var results: [Trip]?
+        
+        do {
+            results = try coreDataRef.managedObjectContext.executeFetchRequest(fetchRequest) as? [Trip]
+        } catch let error as NSError {
+            print(error)
+        }
+        
+        if let results = results {
+            trips = results
+        }
+        tripTable.reloadData()
+    }
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tripTable.dataSource = self
         tripTable.delegate = self
+        
+        let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        coreDataRef = applicationDelegate.sharedCoreDataRef
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cellIdentifier = "MainTripCellView"
         
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MainTripViewCell
         
         let trip = trips[indexPath.row]
         cell.tripName.text = trip.name
-        
         return cell
     }
     
@@ -38,40 +61,19 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedTrip = indexPath.item
         self.performSegueWithIdentifier("showTrip", sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier! == "addTrip" {
-            let addTripViewController = segue.destinationViewController as? NewTripViewController
-            
-            if let viewController = addTripViewController {
-                viewController.delegate = self
-            }
-        }
         if segue.identifier! == "showTrip" {
             let showTripViewController = segue.destinationViewController as? TripViewController
             
             if let viewController = showTripViewController {
-                viewController.trip = self.trips[0]
-                viewController.waypoints = self.trips[0].waypoints
+                viewController.trip = self.trips[self.selectedTrip]
             }
         }
     }
-    
-    // MARK: Add Item View Controller Delegate Methods
-    func controller(controller: NewTripViewController, tripName: String, tripDate: NSDate) {
-        let trip = Trip(name: tripName, date: tripDate, waypoints: [])
-        self.trips += [trip]
-        
-        self.tripTable.reloadData()
-    }
-}
-
-struct Trip {
-    var name : String
-    var date : NSDate
-    var waypoints : [Waypoint]
 }
 
 class MainTripViewCell : UITableViewCell {

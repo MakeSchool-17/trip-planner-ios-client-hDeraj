@@ -25,11 +25,11 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6s-mG-QMf">
                                 <rect key="frame" x="201" y="387" width="200" height="34"/>
-                                <color key="backgroundColor" red="0.58167146381578949" green="0.38568363401315792" blue="0.78985916940789469" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="P0g-AV-y5f"/>
                                 </constraints>
-                                <state key="normal" title="Login with Facebook">
+                                <state key="normal" title="Login">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -129,7 +129,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xrw-HY-X1g" id="V8J-Hs-LFh">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WTY-p7-RNT">
+                                                    <rect key="frame" x="8" y="11" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="WTY-p7-RNT" firstAttribute="centerY" secondItem="V8J-Hs-LFh" secondAttribute="centerY" id="Mc0-Ns-KEM"/>
+                                                <constraint firstItem="WTY-p7-RNT" firstAttribute="leading" secondItem="V8J-Hs-LFh" secondAttribute="leadingMargin" id="Nge-PQ-pQX"/>
+                                                <constraint firstItem="WTY-p7-RNT" firstAttribute="trailing" secondItem="V8J-Hs-LFh" secondAttribute="trailingMargin" id="VYr-Td-zHL"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="waypointNameLabel" destination="WTY-p7-RNT" id="Nfg-me-e7Q"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -196,7 +212,7 @@
         <!--New Waypoint-->
         <scene sceneID="aRr-X5-K3f">
             <objects>
-                <viewController id="AjW-uF-Vfe" sceneMemberID="viewController">
+                <viewController id="AjW-uF-Vfe" customClass="NewWaypointViewController" customModule="Trip_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="yBI-Dh-IQt"/>
                         <viewControllerLayoutGuide type="bottom" id="pxG-wb-ycD"/>
@@ -236,8 +252,16 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Waypoint" id="EwI-P9-aYZ">
                         <barButtonItem key="backBarButtonItem" title=" " id="F5U-Qt-SKg"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="qEK-zz-hdg">
+                            <connections>
+                                <action selector="onDoneButtonPressed:" destination="AjW-uF-Vfe" id="vYF-dc-NYQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapView" destination="b8C-WP-Mlv" id="avg-pD-o6y"/>
+                        <outlet property="onDoneButtonPressed" destination="qEK-zz-hdg" id="WMt-ga-RDL"/>
+                        <outlet property="searchBar" destination="bDP-Yl-jdt" id="tJ7-Nd-3NC"/>
                         <outlet property="searchDisplayController" destination="pwe-7S-e2X" id="CSH-1q-vB8"/>
                     </connections>
                 </viewController>
@@ -253,10 +277,10 @@
             </objects>
             <point key="canvasLocation" x="887" y="1911"/>
         </scene>
-        <!--View Controller-->
+        <!--Waypoint View Contoller-->
         <scene sceneID="YyA-vI-b3j">
             <objects>
-                <viewController id="Wz3-yG-cQu" sceneMemberID="viewController">
+                <viewController title="Waypoint View Contoller" id="Wz3-yG-cQu" customClass="WaypointViewController" customModule="Trip_Planner" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CgZ-qC-fGb"/>
                         <viewControllerLayoutGuide type="bottom" id="DA0-Jv-wfV"/>
@@ -266,6 +290,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="WXu-nz-XO9"/>
+                    <connections>
+                        <outlet property="titleBar" destination="WXu-nz-XO9" id="dmv-wO-S8b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UIj-7E-kwl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,6 +377,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hX7-SA-H4y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.24705882352941178" green="0.31764705882352939" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="HbM-tE-AK3" kind="relationship" relationship="rootViewController" id="IHS-L7-E11"/>
