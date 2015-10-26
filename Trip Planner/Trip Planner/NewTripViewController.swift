@@ -18,6 +18,7 @@ class NewTripViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: Could use same principle of "dependency injection" as suggested in MainViewController
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         coreDataRef = applicationDelegate.sharedCoreDataRef
     }

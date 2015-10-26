@@ -23,7 +23,11 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
         let fetchRequest = NSFetchRequest(entityName : "Trip")
         
         var results: [Trip]?
-        
+      
+        /*
+          TODO: I would consider moving this CoreData request including error handling code into
+          a separate class; prevents this VC from becoming complex
+        */
         do {
             results = try coreDataRef.managedObjectContext.executeFetchRequest(fetchRequest) as? [Trip]
         } catch let error as NSError {
@@ -41,7 +45,13 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
         
         tripTable.dataSource = self
         tripTable.delegate = self
-        
+      
+        /*
+          TODO: Instead of getting this reference from the AppDelegate it would be better to hand the reference
+          from the AppDelegate to this View Controller. This concept is called "dependency injection" and it allows 
+          you to write unit tests easier because you can replace the dependencies of the class easliy. For testing
+          you could replace the real CoreData stack with an in-memory one. Let me know if this description is unclear :)
+        */
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         coreDataRef = applicationDelegate.sharedCoreDataRef
     }
@@ -61,6 +71,7 @@ class MainViewController : UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        // TODO: Typically we avoid 'self' references in Swift and only use them when necessary
         self.selectedTrip = indexPath.item
         self.performSegueWithIdentifier("showTrip", sender: self)
     }

@@ -30,7 +30,8 @@ class TripViewController : UIViewController, UITableViewDelegate, UITableViewDat
         
         waypointsTable.dataSource = self
         waypointsTable.delegate = self
-        
+      
+        // TODO: "Dependency Injection" for CoreData, see extensive note in MainViewController
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         coreDataRef = applicationDelegate.sharedCoreDataRef
         

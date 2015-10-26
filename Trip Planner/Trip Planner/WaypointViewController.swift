@@ -24,7 +24,8 @@ class WaypointViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
+        // TODO: "Dependency Injection" for CoreData, see extensive note in MainViewController
         let applicationDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         coreDataRef = applicationDelegate.sharedCoreDataRef
     }
